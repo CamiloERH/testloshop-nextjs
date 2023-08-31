@@ -6,8 +6,16 @@ import NextLink from 'next/link';
 import { signIn } from 'next-auth/react';
 
 import { useForm } from 'react-hook-form';
-import { Box, Button, Chip, Grid, Link, TextField, Typography } from '@mui/material';
-import { ErrorOutline } from '@mui/icons-material';
+
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Chip from '@mui/material/Chip';
+import Divider  from '@mui/material/Divider';
+import Grid from '@mui/material/Grid';
+import Link from '@mui/material/Link';
+import TextField from '@mui/material/TextField';
+import Typography  from '@mui/material/Typography';
+import ErrorOutline  from '@mui/icons-material/ErrorOutline';
 
 import { AuthContext } from '../../context';
 import { AuthLayout } from '../../components/layouts'
@@ -59,13 +67,13 @@ const RegisterPage = () => {
                     <Grid container spacing={2}>
                         <Grid item xs={12}>
                             <Typography variant='h1' component="h1">Crear cuenta</Typography>
-                            {/* <Chip 
+                            <Chip 
                                 label="No reconocemos ese usuario / contraseña"
                                 color="error"
                                 icon={ <ErrorOutline /> }
                                 className="fadeIn"
                                 sx={{ display: showError ? 'flex': 'none' }}
-                            /> */}
+                            />
                         </Grid>
 
                         <Grid item xs={12}>

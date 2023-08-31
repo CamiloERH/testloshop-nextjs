@@ -20,8 +20,6 @@ import ErrorOutline  from '@mui/icons-material/ErrorOutline';
 import { AuthContext } from '../../context';
 import { AuthLayout } from '../../components/layouts'
 import { validations } from '../../utils';
-import { getServerSession } from 'next-auth';
-import { authOptions } from '../api/auth/[...nextauth]';
 
 
 type FormData = {
@@ -146,30 +144,6 @@ const RegisterPage = () => {
             </form>
         </AuthLayout>
     )
-}
-
-
-
-export const getServerSideProps: GetServerSideProps = async ({ req, res, query }) => {
-    
-    const session = await getServerSession(req, res, authOptions);
-    // console.log({session});
-
-    const { p = '/' } = query;
-
-    if ( session ) {
-        return {
-            redirect: {
-                destination: p.toString(),
-                permanent: false
-            }
-        }
-    }
-
-
-    return {
-        props: { }
-    }
 }
 
 export default RegisterPage;

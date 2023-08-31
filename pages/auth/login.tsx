@@ -18,8 +18,6 @@ import { useForm } from 'react-hook-form';
 import { AuthLayout } from '../../components/layouts'
 import { validations } from '../../utils';
 import { useRouter } from 'next/router';
-import { getServerSession } from 'next-auth';
-import { authOptions } from '../api/auth/[...nextauth]';
 
 
 type FormData = {
@@ -167,30 +165,5 @@ const LoginPage = () => {
         </AuthLayout>
     )
 }
-
-
-export const getServerSideProps: GetServerSideProps = async ({ req, res, query }) => {
-
-    const session = await getServerSession(req, res, authOptions);
-    console.log(session);
-
-    const { p = '/' } = query;
-
-    if (session) {
-        return {
-            redirect: {
-                destination: p.toString(),
-                permanent: false
-            }
-        }
-    }
-
-
-    return {
-        props: {}
-    }
-}
-
-
 
 export default LoginPage
